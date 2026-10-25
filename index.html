@@ -39,7 +39,7 @@
     const { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip: RechartsTooltip, Legend, LineChart, Line, PieChart, Pie, Cell, ResponsiveContainer } = window.Recharts || {};
     const CHART_COLORS = ['#ef4444', '#f59e0b', '#10b981', '#3b82f6', '#8b5cf6', '#ec4899', '#64748b'];
 
-    // LINK MỚI CỦA BẠN DÀNH CHO LỚP 10C1
+    // LINK MỚI CỦA BẠN DÀNH CHO LỚP 11C3
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxS_veSrInztbKLWbVKHCtwrPaf4yI4yX3ZtKC7mTjXX9ku8hW5W-Rfeg5uo1y1G68C/exec';
 
     const getWeekNumber = (targetDate = new Date()) => {
@@ -51,7 +51,45 @@
         const week = Math.floor(Math.floor(diffTime / (1000 * 60 * 60 * 24)) / 7) + 1;
         return week > 35 ? 35 : week;
     };
-    const WEEKS_DATA = Array.from({length: 35}, (_, i) => ({ id: `Tuần ${i+1}`, name: `Tuần ${i+1}`, value: `Tuần ${i+1}` }))
+    const WEEKS_DATA = Array.from({length: 35}, (_, i) => ({ id: `Tuần ${i+1}`, name: `Tuần ${i+1}`, value: `Tuần ${i+1}` }));
+
+    const INITIAL_STUDENTS = [
+      { id: "HV01", name: "Thạch Nguyễn Trâm Anh", team: "TỔ 01", role: "Thành viên", baseScore: 100, password: "Tramanh@123" },
+      { id: "HV02", name: "Dương Gia Bảo", team: "TỔ 01", role: "Thành viên", baseScore: 100, password: "Giabao@123" },
+      { id: "HV03", name: "Thái Hà Linh", team: "TỔ 01", role: "Thành viên", baseScore: 100, password: "Halinh@123" },
+      { id: "HV04", name: "Lê Tấn Lộc", team: "TỔ 01", role: "Thành viên", baseScore: 100, password: "Tanloc@123" },
+      { id: "HV05", name: "Nguyễn Đình Nguyên", team: "TỔ 01", role: "Thành viên", baseScore: 100, password: "Dinhnguyen@123" },
+      { id: "HV06", name: "Lê Văn Nhựt", team: "TỔ 01", role: "Thành viên", baseScore: 100, password: "Vannhut@123" },
+      { id: "HV07", name: "Đặng Nguyễn Thiên Phúc", team: "TỔ 01", role: "Thành viên", baseScore: 100, password: "Thienphuc@123" },
+      { id: "HV08", name: "Đặng Minh Quân", team: "TỔ 01", role: "Thành viên", baseScore: 100, password: "Minhquan@123" },
+      { id: "HV09", name: "Hoàng Hải Quân", team: "TỔ 01", role: "Thành viên", baseScore: 100, password: "Haiquan@123" },
+      { id: "HV10", name: "Phạm Huỳnh Thanh Thảo", team: "TỔ 01", role: "Tổ trưởng", baseScore: 100, password: "Thanhthao@123" },
+      { id: "HV11", name: "Phạm Lê Thu Thảo", team: "TỔ 01", role: "Thành viên", baseScore: 100, password: "Thuthao@123" },
+      { id: "HV12", name: "Nguyễn Triệu Vỹ", team: "TỔ 01", role: "Thành viên", baseScore: 100, password: "Trieuvy@123" },
+      { id: "HV13", name: "Lê Thị Gấm", team: "TỔ 02", role: "Lớp trưởng", baseScore: 100, password: "Thigam@123" },
+      { id: "HV14", name: "Phạm Tuyết Hồng", team: "TỔ 02", role: "Thành viên", baseScore: 100, password: "Tuyethong@123" },
+      { id: "HV15", name: "Nguyễn Trần Đức Khang", team: "TỔ 02", role: "Thành viên", baseScore: 100, password: "Duckhang@123" },
+      { id: "HV16", name: "Ngô Thiên Lộc", team: "TỔ 02", role: "Thành viên", baseScore: 100, password: "Thienloc@123" },
+      { id: "HV17", name: "Bùi Thị Mỹ Phương", team: "TỔ 02", role: "Thành viên", baseScore: 100, password: "Myphuong@123" },
+      { id: "HV18", name: "Tòng Phạm Thế Quang", team: "TỔ 02", role: "Thành viên", baseScore: 100, password: "Thequang@123" },
+      { id: "HV19", name: "Trần Hoàng Sơn", team: "TỔ 02", role: "Tổ trưởng", baseScore: 100, password: "Hoangson@123" },
+      { id: "HV20", name: "La Hữu Thắng", team: "TỔ 02", role: "Thành viên", baseScore: 100, password: "Huuthang@123" },
+      { id: "HV21", name: "Nguyễn Huyền Trâm", team: "TỔ 02", role: "Thành viên", baseScore: 100, password: "Huyentram@123" },
+      { id: "HV22", name: "Thổ Hoàng Anh Trường", team: "TỔ 02", role: "Thành viên", baseScore: 100, password: "Anhtruong@123" },
+      { id: "HV23", name: "Nguyễn Văn Vương", team: "TỔ 02", role: "Thành viên", baseScore: 100, password: "Vanvuong@123" },
+      { id: "HV24", name: "Ngô Gia Bảo", team: "TỔ 03", role: "Thành viên", baseScore: 100, password: "Giabao@123" },
+      { id: "HV25", name: "Nguyễn Thị Thu Hiền", team: "TỔ 03", role: "Lớp phó", baseScore: 100, password: "Thuhien@123" },
+      { id: "HV26", name: "Nguyễn Công Hiếu", team: "TỔ 03", role: "Thành viên", baseScore: 100, password: "Conghieu@123" },
+      { id: "HV27", name: "Hồ Quốc Hùng", team: "TỔ 03", role: "Thành viên", baseScore: 100, password: "Quochung@123" },
+      { id: "HV28", name: "Hoàng Kim Quốc Khánh", team: "TỔ 03", role: "Thành viên", baseScore: 100, password: "Quockhanh@123" },
+      { id: "HV29", name: "Vũ Đăng Khôi", team: "TỔ 03", role: "Thành viên", baseScore: 100, password: "Dangkhoi@123" },
+      { id: "HV30", name: "Nguyễn Công Minh", team: "TỔ 03", role: "Tổ trưởng", baseScore: 100, password: "Congminh@123" },
+      { id: "HV31", name: "Đỗ Nhật Nam", team: "TỔ 03", role: "Thành viên", baseScore: 100, password: "Nhatnam@123" },
+      { id: "HV32", name: "Nguyễn Hoa Phương Nguyên", team: "TỔ 03", role: "Thành viên", baseScore: 100, password: "Phuongnguyen@123" },
+      { id: "HV33", name: "Đoàn Ngọc Tuyết Nhi", team: "TỔ 03", role: "Thành viên", baseScore: 100, password: "Tuyetnhi@123" },
+      { id: "HV34", name: "Võ Hoàng Sang", team: "TỔ 03", role: "Thành viên", baseScore: 100, password: "Hoangsang@123" },
+      { id: "HV35", name: "Võ Thị Thu Thảo", team: "TỔ 03", role: "Thành viên", baseScore: 100, password: "Thuthao@123" }
+    ];
 
     const INITIAL_CRITERIA_LIST = [
       { id: "VP00", type: "NONE", code: "VP00", name: "Không vi phạm / Điểm điều chỉnh", score: 0 },
